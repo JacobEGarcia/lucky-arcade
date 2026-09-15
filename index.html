@@ -118,12 +118,14 @@ var MOTIFS={
   tama:S('<ellipse cx="50" cy="52" rx="22" ry="28"/><path d="M34 44 L40 48 L46 42 L52 48 L58 42 L64 48" opacity=".8"/><circle cx="44" cy="56" r="2" fill="'+GOLD+'"/><circle cx="56" cy="56" r="2" fill="'+GOLD+'"/>'),
   gotchi:S('<circle cx="36" cy="38" r="7"/><circle cx="50" cy="32" r="7"/><circle cx="64" cy="38" r="7"/><path d="M50 46 Q66 46 68 60 Q70 76 50 78 Q30 76 32 60 Q34 46 50 46 Z"/>'),
   todo:S('<rect x="28" y="24" width="44" height="52" rx="5"/><path d="M36 44 L46 54 L66 32"/><path d="M36 64 L60 64" opacity=".6"/>'),
+  falls:S('<path d="M30 20 L70 20 L62 30 L38 30 Z"/><circle cx="38" cy="48" r="8"/><ellipse cx="62" cy="58" rx="9" ry="12"/><rect x="44" y="70" width="12" height="18" rx="3"/>'),
   shrine:S('<path d="M22 26 Q50 18 78 26 L76 33 L24 33 Z"/><path d="M30 40 L70 40"/><path d="M34 40 L34 82 M66 40 L66 82"/><path d="M28 82 L72 82"/>'),
   scoop:S('<circle cx="46" cy="44" r="20"/><path d="M46 24 L46 10" /><path d="M62 58 L78 74"/><path d="M28 84 Q35 78 42 84 Q49 90 56 84 Q63 78 70 84" opacity=".8"/>'),
   stack:S('<rect x="30" y="66" width="40" height="9" rx="4"/><rect x="34" y="53" width="32" height="9" rx="4"/><rect x="38" y="40" width="24" height="9" rx="4"/><rect x="42" y="27" width="16" height="9" rx="4"/><path d="M24 84 L76 84"/>'),
   genie:S('<path d="M30 62 Q26 50 38 44 L56 38 Q70 34 74 44 Q76 50 70 52 L46 58"/><path d="M38 44 Q40 36 50 34 Q60 32 62 38"/><ellipse cx="52" cy="66" rx="18" ry="5"/><path d="M74 44 Q84 40 86 32" opacity=".8"/>')
 };
 var GAMES=[
+ {slug:'fortune-falls', title:'FORTUNE FALLS', g:'福', tag:'catch the fortune, spare the fishbones', m:'falls', live:true},
  {slug:'lucky-pachinko', title:'LUCKY PACHINKO', g:'玉', tag:'a thousand balls, one fortune', m:'pachinko', live:false},
  {slug:'lucky-pinball', title:'LUCKY PINBALL', g:'鈴', tag:'ring the bell for the jackpot', m:'pinball', live:true},
  {slug:'lucky-claw-3d', title:'LUCKY CLAW 3D', g:'掴', tag:'the cat rewards a steady hand', m:'claw3d', live:false},
