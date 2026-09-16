@@ -16,6 +16,11 @@
   body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.028;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cg fill='none' stroke='%23ffd9a0' stroke-width='1'%3E%3Ccircle cx='0' cy='28' r='13'/%3E%3Ccircle cx='28' cy='28' r='13'/%3E%3Ccircle cx='56' cy='28' r='13'/%3E%3Ccircle cx='14' cy='14' r='13'/%3E%3Ccircle cx='42' cy='14' r='13'/%3E%3Ccircle cx='-14' cy='14' r='13'/%3E%3Ccircle cx='70' cy='14' r='13'/%3E%3Ccircle cx='0' cy='0' r='13'/%3E%3Ccircle cx='28' cy='0' r='13'/%3E%3Ccircle cx='56' cy='0' r='13'/%3E%3C/g%3E%3C/svg%3E")}
   .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 5vw 60px}
+  .worldnav{position:relative;z-index:20;display:flex;justify-content:center;gap:4px;flex-wrap:wrap;padding:12px 5vw;border-bottom:1px solid rgba(201,162,39,.3);background:#14090f}
+  .worldnav a{color:#f0d8a8;text-decoration:none;font:700 10px/1 sans-serif;letter-spacing:.12em;padding:12px 14px;border:1px solid transparent}
+  .worldnav a:hover,.worldnav a[aria-current]{border-color:#c9a227}
+  .group{margin-top:48px}.group h2{font:normal 24px/1.1 Georgia,serif;color:#f0d8a8;letter-spacing:.08em}.group p{font:12px/1.6 sans-serif;color:#b08a60;margin-top:7px;max-width:650px}.group .grid{margin-top:20px}
+  .cab{min-height:220px}
 
   /* lanterns */
   .eaves{display:flex;justify-content:center;gap:min(9vw,120px);padding-top:6px}
@@ -71,6 +76,7 @@
 </style>
 </head>
 <body>
+<nav class="worldnav" aria-label="Lucky Cat world"><a href="https://jacobegarcia.github.io/luckycat/">PRODUCT</a><a href="https://jacobegarcia.github.io/luckycat-proof/">PROOF</a><a href="https://jacobegarcia.github.io/luckycat-demo/">DEMO</a><a aria-current="page" href="https://jacobegarcia.github.io/lucky-arcade/">ARCADE</a><a href="https://jacobegarcia.github.io/luckycat/#wishlist">WAITLIST</a></nav>
 <div class="wrap">
   <div class="eaves" aria-hidden="true">
     <svg class="lantern" viewBox="0 0 34 60"><line x1="17" y1="0" x2="17" y2="8" stroke="#8a6a40" stroke-width="1.6"/><ellipse cx="17" cy="30" rx="13" ry="20" fill="#c8302e" stroke="#e8c88a" stroke-width="1.6"/><path d="M6 22 Q17 26 28 22 M5 30 Q17 34 29 30 M6 38 Q17 42 28 38" stroke="#e8c88a" stroke-width="1" fill="none" opacity=".7"/><rect x="13" y="7" width="8" height="4" fill="#c9a227"/><rect x="13" y="49" width="8" height="4" fill="#c9a227"/><text x="17" y="35" font-size="13" fill="#ffe9c8" text-anchor="middle" font-family="Georgia,serif">福</text></svg>
@@ -86,7 +92,10 @@
     <div class="rule"></div>
   </header>
 
-  <div class="grid" id="grid"></div>
+  <section class="group"><h2>Move</h2><p>Fast games built around the cat's run, jump and beckoning paw.</p><div class="grid" id="action-grid"></div></section>
+  <section class="group"><h2>Keep a cat</h2><p>Small companions that grow through attention and daily return.</p><div class="grid" id="companion-grid"></div></section>
+  <section class="group"><h2>Make luck</h2><p>Fortunes, shrines, bells and objects for a daily ritual.</p><div class="grid" id="ritual-grid"></div></section>
+  <section class="group"><h2>Visit the world</h2><p>Villages, gardens and playful spaces around the Lucky Cat character.</p><div class="grid" id="world-grid"></div></section>
 
   <div class="workshop">
     <div class="h">FROM THE SAME WORKSHOP</div>
@@ -125,24 +134,37 @@ var MOTIFS={
   genie:S('<path d="M30 62 Q26 50 38 44 L56 38 Q70 34 74 44 Q76 50 70 52 L46 58"/><path d="M38 44 Q40 36 50 34 Q60 32 62 38"/><ellipse cx="52" cy="66" rx="18" ry="5"/><path d="M74 44 Q84 40 86 32" opacity=".8"/>')
 };
 var GAMES=[
- {slug:'fortune-falls', title:'FORTUNE FALLS', g:'福', tag:'catch the fortune, spare the fishbones', m:'falls', live:true},
- {slug:'lucky-pachinko', title:'LUCKY PACHINKO', g:'玉', tag:'a thousand balls, one fortune', m:'pachinko', live:false},
- {slug:'lucky-pinball', title:'LUCKY PINBALL', g:'鈴', tag:'ring the bell for the jackpot', m:'pinball', live:true},
- {slug:'lucky-claw-3d', title:'LUCKY CLAW 3D', g:'掴', tag:'the cat rewards a steady hand', m:'claw3d', live:false},
- {slug:'lucky-claw', title:'UFO CATCHER NEKO', g:'猫', tag:'the crane, the plush, the catch', m:'ufo', live:false},
- {slug:'lucky-casino', title:'LUCKY CASINO', g:'賽', tag:'the house purrs, the house always pays out', m:'casino', live:false},
- {slug:'koban-pusher', title:'KOBAN PUSHER', g:'小判', tag:'push your luck, drop the koban', m:'pusher', live:true},
- {slug:'lucky-runner', title:'LUCKY RUNNER', g:'走', tag:'run, cat, the roof is on fire', m:'runner', live:true},
- {slug:'lucky-bells', title:'LUCKY BELLS', g:'福', tag:'every ring a small wish', m:'bells', live:true},
- {slug:'lucky-scoop', title:'LUCKY SCOOP', g:'掬', tag:'paper net, goldfish, one breath', m:'scoop', live:false},
- {slug:'koban-stack', title:'KOBAN STACK', g:'積', tag:'stack the koban to the rafters', m:'stack', live:false},
- {slug:'lucky-tama-3d', title:'LUCKY TAMA 3D', g:'卵', tag:'raise the egg, meet the cat', m:'tama', live:false},
- {slug:'lucky-cat-tamagotchi', title:'LUCKY CAT TAMAGOTCHI', g:'育', tag:'a small cat in your pocket', m:'gotchi', live:true},
- {slug:'pet-the-cat', title:'PET THE CAT', g:'撫', tag:'pet the cat, keep the fortune', m:'gotchi', live:true},
- {slug:'lucky-zen', title:'LUCKY ZEN', g:'禅', tag:'rake the sand, calm the cat', m:'zen', live:false},
- {slug:'lucky-garden', title:'LUCKY GARDEN', g:'園', tag:'grow luck, water it daily', m:'garden', live:false},
- {slug:'lucky-todo', title:'LUCKY TODO', g:'済', tag:'done is its own kind of luck', m:'todo', live:false},
- {slug:'lucky-shrine', title:'LUCKY SHRINE', g:'社', tag:'a small shrine for daily luck', m:'shrine', live:false}
+ {slug:'lucky-runner',title:'LUCKY RUNNER',g:'走',tag:'run the rooftops',m:'runner',live:true,group:'action'},
+ {slug:'lucky-runner-3d',title:'LUCKY RUNNER 3D',g:'走',tag:'the run, in depth',m:'runner',live:true,group:'action'},
+ {slug:'lucky-dash',title:'LUCKY DASH',g:'速',tag:'one fast lucky break',m:'runner',live:true,group:'action'},
+ {slug:'lucky-highfive',title:'LUCKY HIGH-FIVE',g:'手',tag:'meet the raised paw',m:'runner',live:true,group:'action'},
+ {slug:'fortune-falls',title:'FORTUNE FALLS',g:'福',tag:'catch fortune, spare the fishbones',m:'falls',live:true,group:'action'},
+ {slug:'koban-pusher',title:'KOBAN PUSHER',g:'小判',tag:'push your luck',m:'pusher',live:true,group:'action'},
+ {slug:'lucky-scoop',title:'LUCKY SCOOP',g:'掬',tag:'paper net and goldfish',m:'scoop',live:true,group:'action'},
+ {slug:'lucky-cat-tamagotchi',title:'LUCKY CAT TAMAGOTCHI',g:'育',tag:'a small cat in your pocket',m:'gotchi',live:true,group:'companion'},
+ {slug:'lucky-tama-3d',title:'LUCKY TAMA 3D',g:'卵',tag:'raise the cat in 3D',m:'tama',live:true,group:'companion'},
+ {slug:'lucky-garden',title:'LUCKY GARDEN',g:'園',tag:'grow luck daily',m:'garden',live:true,group:'companion'},
+ {slug:'lucky-cat-day',title:'A LUCKY CAT DAY',g:'日',tag:'hold a day gently',m:'gotchi',live:true,group:'companion'},
+ {slug:'okage',title:'OKAGE',g:'恩',tag:'a daily ritual',m:'shrine',live:true,group:'companion'},
+ {slug:'lucky-bells',title:'LUCKY BELLS',g:'鈴',tag:'every ring a small wish',m:'bells',live:true,group:'ritual'},
+ {slug:'lucky-shrine',title:'LUCKY SHRINE',g:'社',tag:'a shrine for daily luck',m:'shrine',live:true,group:'ritual'},
+ {slug:'lucky-omikuji',title:'LUCKY OMIKUJI',g:'籤',tag:'draw a fortune',m:'falls',live:true,group:'ritual'},
+ {slug:'lucky-fortune',title:'LUCKY FORTUNE',g:'吉',tag:'ask what today holds',m:'falls',live:true,group:'ritual'},
+ {slug:'ask-the-cat',title:'ASK THE CAT',g:'問',tag:'a quiet question, the cat answers',m:'shrine',live:true,group:'ritual'},
+ {slug:'lucky-cat-forge',title:'LUCKY CAT FORGE',g:'作',tag:'make a wish',m:'stack',live:true,group:'ritual'},
+ {slug:'lucky-cat-studio',title:'POSTER STUDIO',g:'画',tag:'compose the character',m:'tama',live:true,group:'ritual'},
+ {slug:'lucky-cat-nameplate',title:'NAMEPLATE',g:'名',tag:'give the cat a name',m:'stack',live:true,group:'ritual'},
+ {slug:'lucky-cat-kakejiku',title:'KAKEJIKU',g:'軸',tag:'a hanging scroll maker',m:'stack',live:true,group:'ritual'},
+ {slug:'lucky-village',title:'LUCKY VILLAGE',g:'村',tag:'walk through the neighborhood',m:'garden',live:true,group:'world'},
+ {slug:'lucky-village-3d',title:'LUCKY VILLAGE 3D',g:'村',tag:'the village in depth',m:'garden',live:true,group:'world'},
+ {slug:'lucky-world-3d',title:'LUCKY WORLD 3D',g:'界',tag:'a wider character world',m:'garden',live:true,group:'world'},
+ {slug:'lucky-playground',title:'THE PLAYGROUND',g:'遊',tag:'experiments from the workshop',m:'tama',live:true,group:'world'},
+ {slug:'lucky-reverie',title:'LUCKY REVERIE',g:'夢',tag:'a quieter run',m:'runner',live:true,group:'world'},
+ {slug:'lucky-type',title:'LUCKY TYPE',g:'字',tag:'the cat demands words',m:'todo',live:true,group:'world'},
+ {slug:'lucky-kendama',title:'LUCKY KENDAMA',g:'球',tag:'balance, catch, repeat',m:'pachinko',live:true,group:'world'},
+ {slug:'lucky-cat-chop',title:'CHOP STUDIO',g:'印',tag:'make a personal mark',m:'stack',live:true,group:'world'},
+ {slug:'nerv-maneki-control',title:'MANEKI CONTROL',g:'制',tag:'an alternate control study',m:'tama',live:true,group:'world'},
+ {slug:'making-faces',title:'MAKING FACES',g:'顔',tag:'three minds, one library',m:'gotchi',live:true,group:'world'}
 ];
 var WORKSHOP=[
  {slug:'genie', title:'GENIE', g:'灯', tag:'the brass listener - rub the lamp', m:'genie', live:true}
@@ -160,8 +182,8 @@ function card(g,i){
     '<div class="lampRow"><span class="lamp"></span><span class="lampWord">'+(g.live?'NOW OPEN':'準備中 SOON')+'</span></div>';
   return a;
 }
-var grid=document.getElementById('grid');
-GAMES.forEach(function(g,i){grid.appendChild(card(g,i));});
+var groups={action:document.getElementById('action-grid'),companion:document.getElementById('companion-grid'),ritual:document.getElementById('ritual-grid'),world:document.getElementById('world-grid')};
+GAMES.forEach(function(g,i){groups[g.group].appendChild(card(g,i));});
 var wgrid=document.getElementById('wgrid');
 WORKSHOP.forEach(function(g,i){var c=card(g,i);c.classList.add('genieCard');wgrid.appendChild(c);});
 
