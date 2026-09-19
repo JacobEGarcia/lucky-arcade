@@ -2,94 +2,73 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LUCKY CAT ARCADE - every room of the house</title>
-<meta name="description" content="One roof for every Lucky Cat machine. Pachinko, pinball, claw, casino, koban pusher and the whole litter.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucky Cat Arcade</title>
+<meta name="description" content="Every Lucky Cat game and toy, one roof.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Hiragino Mincho ProN','Yu Mincho',Georgia,'Times New Roman',serif;
-    background:radial-gradient(ellipse at 50% 0%,#33141f 0%,#1c0d13 55%,#100710 100%);
-    color:#f6ead2;min-height:100vh;overflow-x:hidden;
-  }
-  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.028;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cg fill='none' stroke='%23ffd9a0' stroke-width='1'%3E%3Ccircle cx='0' cy='28' r='13'/%3E%3Ccircle cx='28' cy='28' r='13'/%3E%3Ccircle cx='56' cy='28' r='13'/%3E%3Ccircle cx='14' cy='14' r='13'/%3E%3Ccircle cx='42' cy='14' r='13'/%3E%3Ccircle cx='-14' cy='14' r='13'/%3E%3Ccircle cx='70' cy='14' r='13'/%3E%3Ccircle cx='0' cy='0' r='13'/%3E%3Ccircle cx='28' cy='0' r='13'/%3E%3Ccircle cx='56' cy='0' r='13'/%3E%3C/g%3E%3C/svg%3E")}
-  .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 5vw 60px}
-  .worldnav{position:relative;z-index:20;display:flex;justify-content:center;gap:4px;flex-wrap:wrap;padding:12px 5vw;border-bottom:1px solid rgba(201,162,39,.3);background:#14090f}
-  .worldnav a{color:#f0d8a8;text-decoration:none;font:700 10px/1 sans-serif;letter-spacing:.12em;padding:12px 14px;border:1px solid transparent}
-  .worldnav a:hover,.worldnav a[aria-current]{border-color:#c9a227}
-  .group{margin-top:48px}.group h2{font:normal 24px/1.1 Georgia,serif;color:#f0d8a8;letter-spacing:.08em}.group p{font:12px/1.6 sans-serif;color:#b08a60;margin-top:7px;max-width:650px}.group .grid{margin-top:20px}
-  .cab{min-height:220px}
+:root{
+  --paper:#F5F1E8; --paper-warm:#EFE9DB; --ink:#16130E; --ink-soft:#4A4438;
+  --red:#A6321F; --line:rgba(22,19,14,.14); --max:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* lanterns */
-  .eaves{display:flex;justify-content:center;gap:min(9vw,120px);padding-top:6px}
-  .lantern{width:34px;filter:drop-shadow(0 0 14px rgba(255,120,60,.35));animation:sway 5.2s ease-in-out infinite;transform-origin:50% 0}
-  .lantern:nth-child(2){animation-delay:-1.7s}.lantern:nth-child(3){animation-delay:-3.4s}
-  @keyframes sway{0%,100%{transform:rotate(2.4deg)}50%{transform:rotate(-2.4deg)}}
+.worldnav{position:sticky;top:0;z-index:10;display:flex;gap:28px;justify-content:center;
+  padding:16px 20px;background:rgba(245,241,232,.88);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.worldnav a{font-size:12.5px;font-weight:600;letter-spacing:.14em;color:var(--ink-soft);text-decoration:none}
+.worldnav a:hover{color:var(--ink)}
+.worldnav a[aria-current="page"]{color:var(--red)}
 
-  header{text-align:center;padding:34px 0 8px;position:relative}
-  .eyebrow{font-size:10px;letter-spacing:7px;color:#c9a227;opacity:.85}
-  h1{font-weight:normal;font-size:clamp(30px,6.4vw,64px);letter-spacing:clamp(6px,1.6vw,18px);color:#f0d8a8;margin:14px 0 6px;text-shadow:0 0 22px rgba(255,170,80,.18)}
-  h1 .red{color:#e05a4e}
-  .sub{font-size:12px;letter-spacing:5px;color:#b08a60}
-  .vert{position:fixed;right:1.4vw;top:150px;writing-mode:vertical-rl;white-space:nowrap;font-size:13px;letter-spacing:9px;color:#c9a227;opacity:.55;z-index:5;pointer-events:none}
-  @media (max-width:1100px){.vert{display:none}}
-  .rule{width:min(420px,70%);height:1px;margin:22px auto 0;background:linear-gradient(90deg,transparent,#c9a227 30%,#c9a227 70%,transparent);opacity:.6}
+.wrap{max-width:var(--max);margin:0 auto;padding:72px 40px 60px}
+header{max-width:640px;margin-bottom:64px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.22em;color:var(--red);margin-bottom:16px}
+h1{font-size:clamp(40px,5.6vw,68px);font-weight:800;letter-spacing:-.035em;line-height:1.02}
+.sub{margin-top:16px;font-size:16.5px;line-height:1.55;color:var(--ink-soft)}
 
-  /* cabinet grid */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:18px;margin-top:38px}
-  .cab{display:block;text-decoration:none;color:inherit;border-radius:10px;background:linear-gradient(180deg,#2c1220,#180a11);
-    border:1px solid rgba(201,162,39,.34);padding:10px 10px 12px;position:relative;
-    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
-    animation:rise .7s ease both}
-  .cab:hover{transform:translateY(-4px);border-color:rgba(232,200,138,.7);box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 22px rgba(255,170,80,.1)}
-  @keyframes rise{from{transform:translateY(14px)}to{transform:translateY(0)}}
-  .marq{display:flex;align-items:center;justify-content:space-between;gap:6px;background:linear-gradient(180deg,#3d1a2a,#24101a);
-    border:1px solid rgba(201,162,39,.4);border-radius:6px;padding:7px 9px}
-  .marq .t{font-size:11px;letter-spacing:2px;color:#f0d8a8;line-height:1.35}
-  .marq .g{font-size:19px;color:#c9a227;line-height:1}
-  .screen{margin-top:9px;height:104px;border-radius:6px;background:#120810;border:1px solid rgba(201,162,39,.22);
-    display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-  .screen svg{width:64%;height:78%}
-  .tag{margin-top:9px;font-size:10px;letter-spacing:1.6px;color:#b08a60;text-align:center;line-height:1.6;min-height:2.6em}
-  .lampRow{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:7px}
-  .lamp{width:7px;height:7px;border-radius:50%;background:#3a5b34;box-shadow:0 0 8px rgba(120,255,140,.0)}
-  .open .lamp{background:#8eff9a;box-shadow:0 0 9px rgba(140,255,154,.85);animation:lampPulse 2.6s ease-in-out infinite}
-  @keyframes lampPulse{0%,100%{opacity:.7}50%{opacity:1}}
-  .lampWord{font-size:8.5px;letter-spacing:3px;color:#7f9a72}
-  .open .lampWord{color:#a8d8a0}
-  .soon{opacity:.42;filter:saturate(.55)}
-  .soon .lamp{background:#6a5638;box-shadow:none;animation:none}
-  .soon .lampWord{color:#8a7050}
-  .soon:hover{transform:none;box-shadow:none;border-color:rgba(201,162,39,.34)}
-  .workshop{margin-top:44px}
-  .workshop .h{font-size:10px;letter-spacing:6px;color:#8a7a9a;text-align:center;margin-bottom:16px}
-  .genieCard{max-width:340px;margin:0 auto;background:linear-gradient(180deg,#171233,#0b0817);border-color:rgba(150,140,220,.34)}
-  .genieCard .marq{background:linear-gradient(180deg,#241d4a,#141030);border-color:rgba(150,140,220,.4)}
-  .genieCard .marq .g{color:#b8a8ff}
-  .genieCard .screen{background:#0b0817;border-color:rgba(150,140,220,.22)}
-  footer{margin-top:56px;text-align:center}
-  .poem{font-size:14px;letter-spacing:6px;color:#c9a227;opacity:.75}
-  .fine{margin-top:14px;font-size:10px;letter-spacing:3px;color:#7a6250;line-height:2}
-  @media (prefers-reduced-motion:reduce){.lantern,.cab,.lamp{animation:none}}
+.group{margin-bottom:64px}
+.group h2{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.group>p{font-size:14.5px;color:var(--ink-soft);margin-bottom:24px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.cab{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:22px;text-decoration:none;color:var(--ink);
+  transition:transform .18s ease,box-shadow .18s ease}
+.cab:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(22,19,14,.10)}
+.cab .marq{margin-bottom:16px}
+.cab .marq .t{font-size:14px;font-weight:700;letter-spacing:.06em}
+.cab .screen{height:96px;display:flex;align-items:center;justify-content:center;
+  background:var(--paper-warm);border-radius:8px;margin-bottom:16px}
+.cab .screen svg{width:56px;height:56px}
+.cab .tag{font-size:13.5px;color:var(--ink-soft);line-height:1.45;min-height:2.6em}
+.cab .lampRow{display:flex;align-items:center;gap:8px;margin-top:14px;
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.cab .lamp{width:7px;height:7px;border-radius:50%;background:#2F7D4F}
+.cab.soon .lamp{background:rgba(22,19,14,.3)}
+.cab .lampWord{color:var(--ink-soft)}
+.cab.open .lampWord{color:var(--ink)}
+
+.workshop{margin-top:8px;border-top:1px solid var(--line);padding-top:48px}
+.workshop .h{font-size:12px;font-weight:600;letter-spacing:.22em;color:var(--ink-soft);margin-bottom:20px}
+
+footer{margin-top:72px;border-top:1px solid var(--line);padding-top:28px;
+  font-size:12.5px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase}
+
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cab{animation:rise .4s ease both}
+@media (max-width:700px){.wrap{padding:48px 20px}.worldnav{gap:18px;flex-wrap:wrap}}
 </style>
 </head>
 <body>
 <nav class="worldnav" aria-label="Lucky Cat world"><a href="https://jacobegarcia.github.io/luckycat/">PRODUCT</a><a href="https://jacobegarcia.github.io/luckycat-proof/">PROOF</a><a href="https://jacobegarcia.github.io/luckycat-demo/">DEMO</a><a aria-current="page" href="https://jacobegarcia.github.io/lucky-arcade/">ARCADE</a><a href="https://jacobegarcia.github.io/luckycat/#wishlist">WAITLIST</a></nav>
 <div class="wrap">
-  <div class="eaves" aria-hidden="true">
-    <svg class="lantern" viewBox="0 0 34 60"><line x1="17" y1="0" x2="17" y2="8" stroke="#8a6a40" stroke-width="1.6"/><ellipse cx="17" cy="30" rx="13" ry="20" fill="#c8302e" stroke="#e8c88a" stroke-width="1.6"/><path d="M6 22 Q17 26 28 22 M5 30 Q17 34 29 30 M6 38 Q17 42 28 38" stroke="#e8c88a" stroke-width="1" fill="none" opacity=".7"/><rect x="13" y="7" width="8" height="4" fill="#c9a227"/><rect x="13" y="49" width="8" height="4" fill="#c9a227"/><text x="17" y="35" font-size="13" fill="#ffe9c8" text-anchor="middle" font-family="Georgia,serif">福</text></svg>
-    <svg class="lantern" viewBox="0 0 34 60"><line x1="17" y1="0" x2="17" y2="8" stroke="#8a6a40" stroke-width="1.6"/><ellipse cx="17" cy="30" rx="13" ry="20" fill="#c8302e" stroke="#e8c88a" stroke-width="1.6"/><path d="M6 22 Q17 26 28 22 M5 30 Q17 34 29 30 M6 38 Q17 42 28 38" stroke="#e8c88a" stroke-width="1" fill="none" opacity=".7"/><rect x="13" y="7" width="8" height="4" fill="#c9a227"/><rect x="13" y="49" width="8" height="4" fill="#c9a227"/><text x="17" y="35" font-size="13" fill="#ffe9c8" text-anchor="middle" font-family="Georgia,serif">猫</text></svg>
-    <svg class="lantern" viewBox="0 0 34 60"><line x1="17" y1="0" x2="17" y2="8" stroke="#8a6a40" stroke-width="1.6"/><ellipse cx="17" cy="30" rx="13" ry="20" fill="#c8302e" stroke="#e8c88a" stroke-width="1.6"/><path d="M6 22 Q17 26 28 22 M5 30 Q17 34 29 30 M6 38 Q17 42 28 38" stroke="#e8c88a" stroke-width="1" fill="none" opacity=".7"/><rect x="13" y="7" width="8" height="4" fill="#c9a227"/><rect x="13" y="49" width="8" height="4" fill="#c9a227"/><text x="17" y="35" font-size="13" fill="#ffe9c8" text-anchor="middle" font-family="Georgia,serif">吉</text></svg>
-  </div>
-
   <header>
-    <span class="vert">招き猫・遊技場</span>
-    <div class="eyebrow">THE LUCKY CAT WORKSHOP PRESENTS</div>
-    <h1>LUCKY CAT <span class="red">ARCADE</span></h1>
-    <div class="sub">EVERY MACHINE, ONE ROOF - COME IN, THE CAT IS EXPECTING YOU</div>
-    <div class="rule"></div>
+    <div class="eyebrow">LUCKY CAT</div>
+    <h1>The Arcade</h1>
+    <div class="sub">Every Lucky Cat game and toy in one place. Pick a cabinet and play - each one opens in your browser, free.</div>
   </header>
 
   <section class="group"><h2>Move</h2><p>Fast games built around the cat's run, jump and beckoning paw.</p><div class="grid" id="action-grid"></div></section>
@@ -99,19 +78,15 @@
 
   <div class="workshop">
     <div class="h">FROM THE SAME WORKSHOP</div>
-    <div class="grid" id="wgrid" style="margin-top:0;grid-template-columns:1fr"></div>
+    <div class="grid" id="wgrid"></div>
   </div>
 
-  <footer>
-    <div class="poem">千の遊び、ひとつの屋根。</div>
-    <div class="fine">THE LUCKY CAT ARCADE - BUILT BY HAND IN THE WORKSHOP<br>EVERY CABINET OPENS WHEN ITS LIGHT COMES ON</div>
-  </footer>
+  <footer>The Lucky Cat Arcade - every cabinet opens in the browser</footer>
 </div>
-
 <script>
 (function(){
 'use strict';
-var GOLD='#c9a227',CREAM='#f6ead2',RED='#c8302e',DIMG='#8a6a40';
+var GOLD='#16130E',CREAM='#F5F1E8',RED='#A6321F',DIMG='rgba(22,19,14,.45)';
 function S(inner){return '<svg viewBox="0 0 100 100" fill="none" stroke="'+GOLD+'" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">'+inner+'</svg>';}
 var MOTIFS={
   pachinko:S('<circle cx="50" cy="18" r="3" fill="'+GOLD+'"/>'+[26,42,58].map(function(y){return [24,50,76].map(function(x){return '<circle cx="'+(x+(y===42?8:0))+'" cy="'+y+'" r="2.2"/>';}).join('');}).join('')+'<path d="M30 78 Q50 88 70 78"/>'),
@@ -176,7 +151,7 @@ function card(g,i){
   if(g.live)a.href=BASE+g.slug+'/';
   a.style.animationDelay=(i*45)+'ms';
   a.dataset.slug=g.slug;
-  a.innerHTML='<div class="marq"><span class="t">'+g.title+'</span><span class="g">'+g.g+'</span></div>'+
+  a.innerHTML='<div class="marq"><span class="t">'+g.title+'</span></div>'+
     '<div class="screen">'+MOTIFS[g.m]+'</div>'+
     '<div class="tag">'+g.tag+'</div>'+
     '<div class="lampRow"><span class="lamp"></span><span class="lampWord">'+(g.live?'NOW OPEN':'準備中 SOON')+'</span></div>';
@@ -195,11 +170,11 @@ function probe(a){
     if(r.ok){
       a.classList.remove('soon');a.classList.add('open');
       if(!a.href)a.href=BASE+slug+'/';
-      word.textContent='NOW OPEN';
+      word.textContent='Play';
     }else{
       a.classList.remove('open');a.classList.add('soon');
       a.removeAttribute('href');
-      word.textContent='準備中 SOON';
+      word.textContent='Unavailable';
     }
   }).catch(function(){/* keep last-known state */});
 }
